@@ -1,0 +1,22 @@
+const express = require('express')
+const middleware = require('../middleware/middleware')
+const adminMiddleware = require('../middleware/admin')
+const upload = require('../middleware/upload')
+const { getProfile, getProfileForUpdate, updateProfile, sendRequestVerifyAccount, getRequestVerifyAccount, deleteRequestVerifyAccount, onVerifySuccess, reportUser, getReportUser, delReportUser, blockUserFromReport, getUserPaginate, blockUserFromAll } = require('../controllers/user.controller')
+const router = express.Router()
+
+router.get('/get-profile/:id', getProfile)
+router.get('/get-profile-for-update/:id', middleware, getProfileForUpdate)
+router.post('/update-profile/:id', middleware, upload.single('profileImg'), updateProfile)
+router.post('/send-request-verify-account', middleware, upload.array("images", 1), sendRequestVerifyAccount)
+router.get('/get-paginate-verify-account', middleware, adminMiddleware, getRequestVerifyAccount)
+router.post('/delete-request-verify-account/:id', middleware, adminMiddleware, deleteRequestVerifyAccount)
+router.post('/verify-account-success/:id', middleware, adminMiddleware, onVerifySuccess)
+router.post('/report-user/:userId', middleware, reportUser)
+router.get('/get-paginate', middleware, adminMiddleware, getReportUser)
+router.delete('/delete-report/:reportId', middleware, adminMiddleware, delReportUser)
+router.put('/block-user-from-report/:reportId', middleware, adminMiddleware, blockUserFromReport)
+router.put('/block-user-from-all/:userId', middleware, adminMiddleware, blockUserFromAll)
+router.get('/get-paginate-all-user', middleware, adminMiddleware, getUserPaginate)
+
+module.exports = router

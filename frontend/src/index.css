@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* custom animation */
+@keyframes loop-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+/* custom utility */
+@layer utilities {
+  .animate-loop-scroll {
+    animation: loop-scroll 26s linear infinite;
+  }
+}
+
+/* ซ่อน scrollbar แต่ยัง scroll ได้ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.big-checkbox .ant-checkbox {
+  transform: scale(1.4);
+}
+
+.big-radio .ant-radio {
+  transform: scale(1.4);
+}
+
+/* ค่า default: แนวนอน */
+.big-radio.ant-radio-group {
+  display: flex;
+  gap: 5px;
+}
+
+/* จอเล็ก (มือถือ) ให้เรียงแนวตั้ง */
+@media (max-width: 576px) {
+  .big-radio.ant-radio-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
