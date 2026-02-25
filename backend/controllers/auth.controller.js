@@ -50,11 +50,12 @@ const registerController = async (req, res) => {
             return res.status(400).json({ message: "อีเมลนี้มีอยู่แล้ว" })
         }
 
+        const id = uuidv4()
         const salt = bcrypt.genSaltSync(15)
         const hashPassword = bcrypt.hashSync(password, salt)
         const addUser = 'INSERT INTO user(id, username, email, password, profileImg, role, status, verifyAccount) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
         const [result] = await pool.execute(addUser, [
-            uuidv4(),
+            id,
             username,
             email,
             hashPassword,
@@ -63,6 +64,12 @@ const registerController = async (req, res) => {
             'ACTIVE',
             0
         ])
+
+        const addNotification = `
+            INSERT INTO notification (id, notificationType, detail, userId, status)
+            VALUES (?, ?, ?, ?, ?)
+        `
+        await pool.execute(addNotification, [uuidv4(), 'VERIFYACCOUNT', 'หากไม่พบสถานที่ฝึก คุณสามารถส่งคำขอสร้างสถานที่ฝึกได้', id, 'ACTIVE'])
 
         return res.status(201).json({ message: "Successful registration." })
 

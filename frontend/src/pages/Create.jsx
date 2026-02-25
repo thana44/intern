@@ -77,7 +77,7 @@ function Create() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/place-type-api/get-place-type-select`)
                 .then((res) => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setPlaceTypeOption(res.data.placeType)
                 })
         } catch (err) {
@@ -115,7 +115,7 @@ function Create() {
     const navigate = useNavigate()
 
 
-    console.log(placeType, 'switch เบี้ยเลี้ยง')
+    // console.log(placeType, 'switch เบี้ยเลี้ยง')
 
     const handlePlaceRequest = async () => {
         setIsLoading(true)

@@ -15,7 +15,7 @@ function MapCard() {
     const lat = parseFloat(reviewData?.latitude)
     const lng = parseFloat(reviewData?.longitude)
 
-    console.log(lat, lng)
+    // console.log(lat, lng)
 
     const Map = (lat, lng) => {
         try {

@@ -11,7 +11,7 @@ function ShowQuestion() {
     try {
       await axios.get(`${import.meta.env.VITE_BACKEND_URL}/question-api/getshow-question`, { withCredentials: true })
         .then((res) => {
-          console.log(res.data, 'this is question')
+          // console.log(res.data, 'this is question')
           setQuestion(res.data.result)
         })
     } catch (err) {

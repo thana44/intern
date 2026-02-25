@@ -46,7 +46,7 @@ function EditProfile() {
         return false; // ไม่ให้ antd auto upload
     };
 
-    console.log(fileList, 'this is image file')
+    // console.log(fileList, 'this is image file')
 
     const { profileId } = useParams()
     const navigate = useNavigate()
@@ -93,7 +93,7 @@ function EditProfile() {
         getProfileForUpdate()
     }, [])
 
-    console.log(email, 'this is username')
+    // console.log(email, 'this is username')
 
     const onSaveProfile = async () => {
         setLoading(true)

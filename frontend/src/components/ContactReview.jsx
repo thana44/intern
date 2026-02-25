@@ -28,24 +28,30 @@ function ContactReview() {
                 }
                 {
                     reviewData?.webSite &&
-                    <div className='flex items-center gap-2'>
-                        <LinkOutlined style={{ color: 'gray' }} />
-                        <h3 className='text-sm text-gray-500'>{reviewData?.webSite}</h3>
-                    </div>
+                    <a href={`https://${reviewData?.webSite}`} target="_blank" rel="noopener noreferrer">
+                        <div className='flex items-center gap-2 hover:cursor-pointer hover:opacity-60 duration-200'>
+                            <LinkOutlined style={{ color: 'gray' }} />
+                            <h3 className='text-sm text-gray-500'>{reviewData?.webSite}</h3>
+                        </div>
+                    </a>
                 }
                 {
                     reviewData?.facebook &&
-                    <div className='flex items-center gap-2'>
-                        <FacebookFilled style={{ color: '#065cd4' }} />
-                        <h3 className='text-sm text-gray-500'>{reviewData?.facebook}</h3>
-                    </div>
+                    <a href={`https://facebook.com/${reviewData?.facebook}`} target="_blank" rel="noopener noreferrer">
+                        <div className='flex items-center gap-2 hover:cursor-pointer hover:opacity-60 duration-200'>
+                            <FacebookFilled style={{ color: '#065cd4' }} />
+                            <h3 className='text-sm text-gray-500'>{reviewData?.facebook}</h3>
+                        </div>
+                    </a>
                 }
                 {
                     reviewData?.instagram &&
-                    <div className='flex items-center gap-2'>
-                        <InstagramOutlined style={{ color: 'purple' }} />
-                        <h3 className='text-sm text-gray-500'>{reviewData?.instagram}</h3>
-                    </div>
+                    <a href={`https://instagram.com/${reviewData?.instagram}`} target="_blank" rel="noopener noreferrer">
+                        <div className='flex items-center gap-2 hover:cursor-pointer hover:opacity-60 duration-200'>
+                            <InstagramOutlined style={{ color: 'purple' }} />
+                            <h3 className='text-sm text-gray-500'>{reviewData?.instagram}</h3>
+                        </div>
+                    </a>
                 }
                 <div className='flex gap-2'>
                     <div>

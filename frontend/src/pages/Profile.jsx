@@ -34,7 +34,7 @@ function Profile() {
         getProfile()
     }, [])
 
-    console.log(profile, 'test profile')
+    // console.log(profile, 'test profile')
 
     const [isLoading, setIsLoading] = useState(false)
 

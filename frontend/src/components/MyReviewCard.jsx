@@ -31,7 +31,7 @@ function MyReviewCard({ placeId, onDelSucc }) {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/review-api/getMyReview/${placeId}`, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data.result, 'test get my review')
+                    // console.log(res.data.result, 'test get my review')
                     setMyReview(res.data.result[0])
                 })
         } catch (err) {
@@ -59,7 +59,7 @@ function MyReviewCard({ placeId, onDelSucc }) {
         try {
             await axios.put(`${import.meta.env.VITE_BACKEND_URL}/review-api/delete/${id}`, {}, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data.result, 'test delete review')
+                    // console.log(res.data.result, 'test delete review')
                     dispatch(triggerReviewUpdate())
                     onDelSucc()
                 })
@@ -70,7 +70,7 @@ function MyReviewCard({ placeId, onDelSucc }) {
         }
     }
 
-    console.log(myReview, 'this is my new review')
+    // console.log(myReview, 'this is my new review')
 
     return (
         <div className='bg-white py-5 px-3 rounded-lg shadow-md hover:cursor-pointer mt-3'>

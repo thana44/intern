@@ -23,16 +23,16 @@ function Search() {
 
 
     const { provinceId } = useParams()
-    console.log(provinceId, 'from main search')
-    console.log(selectedPlaceTypeId, 'select place type from main search')
-    console.log(selectedRating, 'select rating from main search')
-    console.log(selectedDistrictIds, 'select district from main search')
-    console.log(keyword, 'keyword from main search')
+    // console.log(provinceId, 'from main search')
+    // console.log(selectedPlaceTypeId, 'select place type from main search')
+    // console.log(selectedRating, 'select rating from main search')
+    // console.log(selectedDistrictIds, 'select district from main search')
+    // console.log(keyword, 'keyword from main search')
 
     const getPlaceType = async () => {
         try {
             const result = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/place-type-api/get-place-type-select`, { withCredentials: true })
-            console.log(result.data, 'test get place type')
+            // console.log(result.data, 'test get place type')
             setPlaceTypes(result.data.placeType)
         } catch (err) {
             console.log(err)
@@ -47,7 +47,7 @@ function Search() {
     const getDistrict = async () => {
         try {
             const result = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/district-api/get-select/${provinceId}`, { withCredentials: true })
-            console.log(result.data, 'test get district')
+            // console.log(result.data, 'test get district')
             setDistricts(result.data.district);
         } catch (err) {
             console.log(err)
@@ -72,7 +72,7 @@ function Search() {
                 provinceId, placeTypeId: selectedPlaceTypeId, rating: selectedRating, districtId: selectedDistrictIds,
                 search: keyword
             }, { withCredentials: true })
-            console.log(result.data, 'place filter')
+            // console.log(result.data, 'place filter')
             setPlaces(result.data.data)
         } catch (err) {
             console.log(err)
@@ -86,7 +86,7 @@ function Search() {
     const getNameProvince = async () => {
         try {
             const result = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/province-api/get-name/${provinceId}`, {}, { withCredentials: true })
-            console.log(result.data, 'prvince name')
+            // console.log(result.data, 'prvince name')
             setShowProvince(result.data.province[0].name)
         } catch (err) {
             console.log(err)

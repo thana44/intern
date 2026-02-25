@@ -79,5 +79,23 @@ const getNotiCount = async (req, res) => {
     }
 }
 
+const clearAllNotification = async (req, res) => {
+    const curId = req.currentUser.id
 
-module.exports = { getNotification, delNotification, getSaveCount, getNotiCount }
+    try {
+
+        const delNoti = `
+            DELETE FROM notification
+            WHERE userId = ?
+        `
+        await pool.execute(delNoti, [curId])
+
+        return res.json({ message: 'เสร็จสิ้น' })
+
+    } catch (err) {
+        console.log(err, 'ERROR')
+    }
+}
+
+
+module.exports = { getNotification, delNotification, getSaveCount, getNotiCount, clearAllNotification }

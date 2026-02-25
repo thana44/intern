@@ -24,7 +24,7 @@ function ResetPassword() {
         setIsLoading(true)
         try {
             const result = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/auth-api/reset-password`, { oldPassword, newPassword, confirmPassword }, { withCredentials: true })
-            console.log(result.data)
+            // console.log(result.data)
             message.success(result.data.message);
             setTimeout(() => {
                 return navigate(`/profile/${currentUser?.id}`)
@@ -38,7 +38,7 @@ function ResetPassword() {
         }
     }
 
-    console.log(profile, 'test profile')
+    // console.log(profile, 'test profile')
 
     return (
         <div className='bg-gray-200 min-h-screen'>

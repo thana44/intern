@@ -32,6 +32,13 @@ passport.use(new GoogleStrategy({
 
             const addUser = "INSERT INTO user(id, googleId, email, username, profileImg, role, status, verifyAccount) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
             await pool.execute(addUser, [newUser.id, newUser.googleId, newUser.email, newUser.username, newUser.profileImg, 'USER', 'ACTIVE', 0])
+
+            const addNotification = `
+            INSERT INTO notification (id, notificationType, detail, userId, status)
+            VALUES (?, ?, ?, ?, ?)
+        `
+            await pool.execute(addNotification, [uuidv4(), 'VERIFYACCOUNT', 'หากไม่พบสถานที่ฝึก คุณสามารถส่งคำขอสร้างสถานที่ฝึกได้', newUser.id, 'ACTIVE'])
+
             const token = jwt.sign({ id: newUser.id, username: newUser.username, profileImg: newUser.profileImg, role: 'USER', status: 'ACTIVE' }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
             return cb(null, { token })

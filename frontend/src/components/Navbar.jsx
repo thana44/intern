@@ -28,7 +28,7 @@ function Navbar() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth-api/get-current-user`, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     dispatch(setCurrentUser(res.data))
                 })
         } catch (err) {
@@ -41,8 +41,8 @@ function Navbar() {
         handleCurrentUser()
     }, [location.pathname])
 
-    console.log(profileMenu, 'this is profile menu')
-    console.log(notificationMenu, 'this is notification menu')
+    // console.log(profileMenu, 'this is profile menu')
+    // console.log(notificationMenu, 'this is notification menu')
 
     const [open, setOpen] = useState(false)
     const [size, setSize] = useState(120)
@@ -88,7 +88,7 @@ function Navbar() {
         getNotiCount()
     }, [location.pathname])
 
-    console.log(notiCount, 'notiCount')
+    // console.log(notiCount, 'notiCount')
 
     return (
         <div className='bg-white h-20 flex items-center justify-between px-5 md:justify-around md:px-0 shadow-md'>

@@ -29,7 +29,7 @@ function Review() {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/place-api/get-place-review/${placeId}`, { withCredentials: true })
                 .then((res) => {
                     dispatch(getReviewData(res.data.place))
-                    console.log(res.data.place, 'placeeeeeeeeeeeeee')
+                    // console.log(res.data.place, 'placeeeeeeeeeeeeee')
                 })
         } catch (err) {
             console.log(err)
@@ -43,14 +43,14 @@ function Review() {
         }
     }, [placeId])
 
-    console.log(reviewData, 'test redux')
+    // console.log(reviewData, 'test redux')
 
     const [images, setImages] = useState([])
     const getImage = async () => {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/image-api/get-image/${reviewData?.placeRequestId}`, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setImages(res.data.result.map((img) => img.imgUrl))
                 })
         } catch (err) {
@@ -77,7 +77,7 @@ function Review() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/review-api/getMyReview/${placeId}`, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data.result, 'test get my review')
+                    // console.log(res.data.result, 'test get my review')
                     setMyReview(res.data.result)
                 })
         } catch (err) {
@@ -119,20 +119,20 @@ function Review() {
         getRatingSummary()
     }, [reviewUpdated, placeId])
 
-    console.log(summary, 'test sum')
+    // console.log(summary, 'test sum')
 
     const [selectedStar, setSelectedStar] = useState(null)
     const [sortBy, setSortBy] = useState('createAt')
 
-    console.log(selectedStar, 'star')
-    console.log(sortBy, 'sortBy')
+    // console.log(selectedStar, 'star')
+    // console.log(sortBy, 'sortBy')
 
     const [allReview, setAllReview] = useState([])
     const getReviewInPlace = async () => {
         try {
             await axios.post(`${import.meta.env.VITE_BACKEND_URL}/review-api/get-all-review/${placeId}`, { selectedStar, sortBy }, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data, 'all -review')
+                    // console.log(res.data, 'all -review')
                     if (currentUser) {
                         setAllReview(res.data.newResult.filter((item) => item.userId !== currentUser.id))
                     } else {
@@ -153,7 +153,7 @@ function Review() {
         getReviewInPlace()
     }
 
-    console.log(allReview, 'this is final result')
+    // console.log(allReview, 'this is final result')
 
     const getSaveCount = async () => {
         try {

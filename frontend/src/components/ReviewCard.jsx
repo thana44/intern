@@ -15,7 +15,7 @@ dayjs.extend(timezone)
 dayjs.tz.setDefault('Asia/Bangkok')
 function ReviewCard({ data, onLikeSucc }) {
 
-    console.log(data, 'data post')
+    // console.log(data, 'data post')
     const currentUser = useSelector((x) => x.user.currentUser)
     const navigate = useNavigate()
 
@@ -23,7 +23,7 @@ function ReviewCard({ data, onLikeSucc }) {
         try {
             await axios.put(`${import.meta.env.VITE_BACKEND_URL}/review-api/like-unlike/${data?.id}`, {}, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     onLikeSucc()
                 })
         } catch (err) {
@@ -40,7 +40,7 @@ function ReviewCard({ data, onLikeSucc }) {
         try {
             await axios.post(`${import.meta.env.VITE_BACKEND_URL}/review-api/report-review/${data?.id}`, { detail }, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setDetail('')
                     setModalOpen(false)
                 })

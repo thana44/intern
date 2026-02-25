@@ -19,7 +19,7 @@ function Search() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/province-api/get-select`)
                 .then((res) => {
-                    console.log(res.data, 'province')
+                    // console.log(res.data, 'province')
                     setOptions(res.data.province)
                 })
         } catch (err) {
@@ -45,7 +45,7 @@ function Search() {
     }, [provinceId, options]);
 
 
-    console.log('id selected', selectId)
+    // console.log('id selected', selectId)
 
     return (
         <div className='bg-white flex items-center gap-2'>

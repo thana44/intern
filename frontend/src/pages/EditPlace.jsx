@@ -41,7 +41,7 @@ function EditPlace() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/place-type-api/get-place-type-select`)
                 .then((res) => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setPlaceTypeOption(res.data.placeType)
                 })
         } catch (err) {
@@ -92,7 +92,7 @@ function EditPlace() {
     // console.log(webSite)
     // console.log(facebook)
     // console.log(instagram)
-    console.log(placeType, 'switch เบี้ยเลี้ยง')
+    // console.log(placeType, 'switch เบี้ยเลี้ยง')
 
     const handlePlaceRequestEdit = async () => {
         setIsLoading(true)
@@ -143,7 +143,7 @@ function EditPlace() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/place-api/get-place-review/${placeId}`, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data, 'test data')
+                    // console.log(res.data, 'test data')
                     setThaiName(res.data.place.thaiName)
                     setEngName(res.data.place.engName)
                     setPlaceType(res.data.place.placeTypeId)
@@ -182,8 +182,8 @@ function EditPlace() {
         }
     }, [placeId])
 
-    console.log(newWorkDay, 'test new work day')
-    console.log(workTime, 'test work time')
+    // console.log(newWorkDay, 'test new work day')
+    // console.log(workTime, 'test work time')
 
     return (
         <div className='bg-gray-200 min-h-screen'>

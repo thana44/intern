@@ -40,7 +40,7 @@ function VerifyAccountRequest() {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    console.log(fileList, 'test filelist')
+    // console.log(fileList, 'test filelist')
 
     const handleSendRequest = async () => {
         if (!studentId?.trim() || !fullName?.trim() || !selectId) {
@@ -63,7 +63,7 @@ function VerifyAccountRequest() {
             setSelectId(null)
             setFileList([])
             setModalOpen(true)
-            console.log(result.data, 'test data')
+            // console.log(result.data, 'test data')
 
         } catch (err) {
             console.log(err)
@@ -76,8 +76,8 @@ function VerifyAccountRequest() {
     const [fullName, setFullName] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
 
-    console.log(studentId, 'studentId')
-    console.log(fullName, 'fullName')
+    // console.log(studentId, 'studentId')
+    // console.log(fullName, 'fullName')
 
     useEffect(() => {
         if (currentUser?.verifyAccount === 1) {
@@ -93,7 +93,7 @@ function VerifyAccountRequest() {
         try {
             await axios.get(`${import.meta.env.VITE_BACKEND_URL}/place-api/get-select`, { withCredentials: true })
                 .then((res) => {
-                    console.log(res.data, 'place select')
+                    // console.log(res.data, 'place select')
                     setOptions(res.data.place)
                 })
         } catch (err) {
@@ -105,7 +105,7 @@ function VerifyAccountRequest() {
         getPlaceSelect()
     }, [])
 
-    console.log(selectId, 'id from place select')
+    // console.log(selectId, 'id from place select')
 
     return (
         <div className='bg-gray-200 min-h-screen'>

@@ -27,7 +27,7 @@ function AllPhoto() {
         getAllPhoto()
     }, [])
 
-    console.log(allPhoto)
+    // console.log(allPhoto, data)
 
     return (
         <div className='bg-gray-200 min-h-screen'>

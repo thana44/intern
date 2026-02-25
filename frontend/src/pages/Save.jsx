@@ -13,7 +13,7 @@ function Save() {
     const getPlaceSave = async () => {
         try {
             const result = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/save-api/get-place-save`, {withCredentials: true})
-            console.log(result.data,' this is my post')
+            // console.log(result.data,' this is my post')
             setData(result.data.data)
         }catch(err) {
             console.log(err)

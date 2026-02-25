@@ -12,15 +12,15 @@ function Home() {
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('keyword');
 
-  console.log(keyword, 'keword from home')
   const [places, setPlaces] = useState([])
+  // console.log(places, 'keword from home')
 
   const getPlaceFilter = async () => {
     try {
       const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/place-api/get-filter`, {
         search: keyword
       }, { withCredentials: true })
-      console.log(result.data, 'place home')
+      // console.log(result.data, 'place home')
       setPlaces(result.data.data)
     } catch (err) {
       console.log(err)

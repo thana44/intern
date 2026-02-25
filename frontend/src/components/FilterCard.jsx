@@ -66,8 +66,9 @@ function FilterCard({ placeTypes, selectedPlaceTypeId, onChangePlaceType, select
                         onChange={(e) => onChangeRating(e.target.value)}
                         value={selectedRating}
                         options={[
-                            { value: 3.5, label: '3.5+' },
+                            { value: 5, label: '5.0' },
                             { value: 4, label: '4.0+' },
+                            { value: 3, label: '3.0+' },
                         ]}
                     />
                 </div>
