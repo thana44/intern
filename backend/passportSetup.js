@@ -39,7 +39,7 @@ passport.use(new GoogleStrategy({
         `
             await pool.execute(addNotification, [uuidv4(), 'VERIFYACCOUNT', 'หากไม่พบสถานที่ฝึก คุณสามารถส่งคำขอสร้างสถานที่ฝึกได้', newUser.id, 'ACTIVE'])
 
-            const token = jwt.sign({ id: newUser.id, username: newUser.username, profileImg: newUser.profileImg, role: 'USER', status: 'ACTIVE' }, process.env.JWT_SECRET, { expiresIn: '1h' })
+            const token = jwt.sign({ id: newUser.id, username: newUser.username, profileImg: newUser.profileImg, role: 'USER', status: 'ACTIVE' }, process.env.JWT_SECRET, { expiresIn: '24h' })
 
             return cb(null, { token })
         }
@@ -49,7 +49,7 @@ passport.use(new GoogleStrategy({
                 message: "บัญชีนี้ถูกปิดการใช้งานแล้ว",
             });
         }
-        const token = jwt.sign({ id: result[0].id, username: result[0].username, profileImg: result[0].profileImg, role: result[0].role, status: result[0].status }, process.env.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ id: result[0].id, username: result[0].username, profileImg: result[0].profileImg, role: result[0].role, status: result[0].status }, process.env.JWT_SECRET, { expiresIn: '24h' })
 
         return cb(null, { token })
     }

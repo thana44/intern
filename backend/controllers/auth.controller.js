@@ -102,7 +102,7 @@ const loginController = async (req, res) => {
             return res.status(401).json({ message: "บัญชีของคุณถูกระงับแล้ว" })
         }
 
-        const token = jwt.sign({ id: result[0].id, username: result[0].username, profileImg: result[0].profileImg, role: result[0].role, status: result[0].status }, process.env.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ id: result[0].id, username: result[0].username, profileImg: result[0].profileImg, role: result[0].role, status: result[0].status }, process.env.JWT_SECRET, { expiresIn: '24h' })
 
         return res.cookie('token', token, { httpOnly: true }).status(200).json({ message: "Login successful.", token })
 
